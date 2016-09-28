@@ -6,25 +6,18 @@ class Barista {
     private final String name;
     private WorkEthic workEthic;
 
-    Barista(String name) {
-        this.name = name;
-        if (Objects.equals(name, "vicky")) {
-            workEthic = new CustomerFriendlyWorkEthic();
-        } else if (Objects.equals(name, "gemma")) {
-            workEthic = new LazyWorkEthic();
-        } else if (Objects.equals(name, "gianluca")) {
-            workEthic = new BadHearingWorkEthic();
-        } else {
-            workEthic = new LazyWorkEthic();
-        }
-    }
-
     String getName() {
         return name;
     }
 
     WorkEthic getWorkEthic() {
         return workEthic;
+    }
+
+    Barista(String name, WorkEthic workEthic) {
+        this.name = name;
+        // IOC
+        this.workEthic = workEthic;
     }
 
     CustomerExperience serve(String customer) {

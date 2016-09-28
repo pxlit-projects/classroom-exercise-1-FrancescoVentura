@@ -9,12 +9,18 @@ public class MoonDollahsCoffeeShop {
 
     private List<Barista> baristas = new ArrayList<>();
 
-    MoonDollahsCoffeeShop() {
-        Barista vicky = new Barista("vicky");
-        Barista emma = new Barista("gemma");
-        Barista gianluca = new Barista("gianluca");
+    List<Barista> getBaristas() {
+        return baristas;
+    }
 
-        baristas = Arrays.asList(vicky, emma, gianluca);
+    MoonDollahsCoffeeShop() {
+
+        Barista vicky = new Barista("vicky", new CustomerFriendlyWorkEthic());
+        Barista gemma = new Barista("gemma", new LazyWorkEthic());
+        Barista gemmaSister = new Barista("gemmaSister", new BadHearingWorkEthic());
+        Barista gianluca = new Barista("gianluca", new BadHearingWorkEthic());
+
+        baristas = Arrays.asList(vicky, gemma, gemmaSister, gianluca);
     }
 
     private void serve(List<String> customers) {
@@ -26,13 +32,8 @@ public class MoonDollahsCoffeeShop {
         return baristas.get(random).serve(customer);
     }
 
-    List<Barista> getBaristas() {
-        return baristas;
-    }
-
     public static void main(String[] args) {
         MoonDollahsCoffeeShop shop = new MoonDollahsCoffeeShop();
-
 
         List<String> customers = Arrays.asList("meliodas", "ban", "elizabeth", "king", "merlin", "howther", "diane", "escanor");
         shop.serve(customers);
